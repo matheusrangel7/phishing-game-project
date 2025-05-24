@@ -1,0 +1,48 @@
+@using PhishingGameWebTest.Services
+@{
+    ViewData["Title"] = "Phishing Game";
+    var emailObj = ViewBag.EmailAtual as PhishingGameWebTest.Models.EmailPhishingOrNot;
+    var totalEmail = EmailProvider.GetEmails().Count;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/game.css" />
+</head>
+<body>
+
+<h1>🧠 Jogo de Phishing</h1>
+
+<div id="feedbackAnimation" class="feedback hidden" data-resultado="@ViewBag.Resultado"></div>
+
+
+@if (ViewBag.Final == true)
+{
+    <h2>🎉 Fim do jogo!</h2>
+    <p>Sua pontuação final: <strong>@ViewBag.Score / @totalEmail</strong></p>
+    <form method="get" action="/">
+        <button type="submit">Jogar novamente</button>
+    </form>
+}
+else if (emailObj?.Email != null)
+{
+    <div class="email-box">
+        <p><strong>De:</strong> @emailObj.Email.Remetente</p>
+        <p><strong>Assunto:</strong> @emailObj.Email.Assunto</p>
+        <p><strong>Mensagem:</strong> @emailObj.Email.Corpo</p>
+    </div>
+
+    <form method="get" id="gameForm">
+        <button name="resposta" value="true">É phishing</button>
+        <button name="resposta" value="false">Não é phishing</button>
+    </form>
+
+    <div class="score">Pontuação: @ViewBag.Score</div>
+}
+
+<script src="~/js/game.js"></script>
+</body>
+</html>

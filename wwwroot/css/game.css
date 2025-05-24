@@ -1,0 +1,101 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 40px;
+  background-color: #f4f6f8;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.email-box {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 600px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.email-box p {
+  margin: 8px 0;
+}
+
+form {
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s;
+}
+
+button[value="true"] {
+  background-color: #f44336;
+  color: white;
+}
+
+button[value="false"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+.score {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Feedback animation */
+.feedback {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  font-weight: bold;
+  opacity: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.feedback.show {
+  opacity: 1;
+  animation: popFade 1s ease forwards;
+}
+
+.feedback.positivo {
+  color: #4caf50;
+}
+
+.feedback.negativo {
+  color: #f44336;
+}
+
+@keyframes popFade {
+  0% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}

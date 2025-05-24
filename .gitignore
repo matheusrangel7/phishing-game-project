@@ -1,0 +1,12 @@
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+.idea/
+*.log
+*.db
+.env
+*.DS_Store
