@@ -1,0 +1,15 @@
+### JetBrains ###
+.idea/
+
+### .NET ###
+bin/
+obj/
+.publish/
+appsettings.Development.json
+
+### VS Code ###
+.vscode/
+
+### Banco de dados ###
+# Mantemos apenas o emails.db versionado!
+!backend/PhishingGame/Game.API/Database/phishing.db

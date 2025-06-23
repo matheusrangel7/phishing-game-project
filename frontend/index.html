@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhisgueiNada - Jogo Educativo sobre Phishing</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="media/logo.png" type="image/png">
+</head>
+
+<body>
+    <div class="global-timer hidden" id="globalTimer">90</div>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>PhisgueiNada</h1>
+                <div class="logo-container">
+                    <img src="media/logo.png" alt="Logo PhisgueiNada" class="logo">
+                </div>
+            </div>
+            <p>Teste suas habilidades em identificar e-mails de phishing!</p>
+        </header>
+
+        <div id="setupScreen" class="card">
+            <h2>Configurar Jogo</h2>
+            <div class="form-group">
+                <label for="difficulty">Dificuldade:</label>
+                <select id="difficulty">
+                    <option value="Easy">Fácil (5 emails - 18s/email)</option>
+                    <option value="Medium">Médio (6 emails - 15s/email)</option>
+                    <option value="Hard">Difícil (7 emails - ~12.8s/email)</option>
+                    <option value="PhishingMaster">Phishing Master (15 emails - 6s/email)</option>
+                </select>
+            </div>
+            <button id="startBtn">Iniciar Jogo</button>
+        </div>
+
+        <div id="loadingScreen" class="card hidden">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Preparando seu jogo...</p>
+            </div>
+        </div>
+
+        <div id="gameScreen" class="card hidden">
+            <div class="email-timer-container">
+                <div class="email-timer" id="emailTimer">18</div>
+                <div class="timer-label">segundos</div>
+            </div>
+
+            <div class="progress">
+                E-mail <span id="currentEmail">1</span> de <span id="totalEmails">5</span>
+            </div>
+
+            <div id="emailContainer" class="email-transition"></div>
+
+            <div class="answer-buttons">
+                <button id="phishingBtn" class="btn-danger">É Phishing</button>
+                <button id="legitBtn" class="btn-success">É Legítimo</button>
+            </div>
+        </div>
+
+        <div id="resultsScreen" class="card hidden">
+            <h2>Resultados</h2>
+            <p>Pontuação: <strong><span id="scoreSpan">0</span>/<span id="totalSpan">0</span></strong></p>
+            <p>Acertos: <strong><span id="correctSpan">0</span></strong></p>
+            <p>Erros: <strong><span id="wrongSpan">0</span></strong></p>
+            <p>Não respondidos: <strong><span id="unansweredSpan">0</span></strong></p>
+            <p>Tempo gasto: <strong><span id="timeTakenSpan">0</span> segundos</strong></p>
+
+            <h3>Detalhes:</h3>
+            <div id="detailsContainer"></div>
+
+            <button id="playAgainBtn">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <div id="feedbackContainer"></div>
+    <div id="errorContainer"></div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
