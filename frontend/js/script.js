@@ -342,7 +342,37 @@ function handleError(error, fallbackScreen) {
 playAgainBtn.addEventListener('click', showSetupScreen);
 
 function showSetupScreen() {
+    // Parar quaisquer timers ativos
+    clearInterval(globalTimerInterval);
+    clearInterval(emailTimerInterval);
+    
+    // Resetar variáveis de estado
+    globalTimerInterval = null;
+    emailTimerInterval = null;
+    
+    // Reativar os botões de resposta
+    phishingBtn.disabled = false;
+    legitBtn.disabled = false;
+    
+    // Limpar feedbacks visuais
+    feedbackContainer.innerHTML = '';
+    
+    // Resetar variáveis do jogo
+    gameSession = null;
+    currentEmails = [];
+    currentEmailIndex = 0;
+    userAnswers = [];
+    globalTimeLeft = 0;
+    emailTimeLeft = 0;
+
+    // Alternar telas
     resultsScreen.classList.add('hidden');
     setupScreen.classList.remove('hidden');
     globalTimerEl.classList.add('hidden');
+    
+    // Resetar temporizadores visuais
+    globalTimerEl.textContent = '0';
+    emailTimerEl.textContent = '0';
+    globalTimerEl.className = 'global-timer';
+    emailTimerEl.className = 'email-timer';
 }
